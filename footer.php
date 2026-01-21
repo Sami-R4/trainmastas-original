@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/premium.css">
 <script>
     if (window.location.pathname === '/trainmastas/footer.php') {
         var newURLT;
@@ -9,7 +10,7 @@
 <!--------------------------------------------------------------------------------------------
                                               Footer
     ---------------------------------------------------------------------------------------------->
-<footer class="text-center text-lg-start text-white " style="background-color: rgb(64, 99, 61)">
+<footer class="text-center text-lg-start text-white pm-footer">
     <!-- Section: Social media -->
 
     <!-- Section: Social media -->
@@ -20,7 +21,7 @@
             <div class="row mt-3 py-5">
                 <div class="col-md-6 col-lg-4 col-xl-3 mx-auto mb-4">
                     <h6 class="text-uppercase fw-bold">TrainMastas</h6>
-                    <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: green; height: 2px" />
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background: linear-gradient(90deg, var(--pm-green), var(--pm-green-light)); height: 2px" />
                 </div>
 
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4" style="font-size:15px !important">
@@ -45,13 +46,16 @@
     </section>
     <style>
         .footer-link:hover {
-            border-bottom: 1px solid green;
+            border-bottom: 1px solid rgba(255,255,255,0.5);
             text-decoration: underline;
-            color: green;
+            color: rgba(255,255,255,0.9);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .footer-link {
             text-decoration: none;
+            color: rgba(255,255,255,0.8);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
     <!-- Section: Links  -->
