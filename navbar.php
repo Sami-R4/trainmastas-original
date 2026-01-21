@@ -407,11 +407,6 @@
                         MyCourses
                     </a>
                 </li>
-                <li class="nav-item mx-2 mx-md-1 dashboard-elements d-none  instructor-section">
-                    <a href="dashboard.php?#createdCourseDiv" class="nav-link nav-links-hover createdCourse" style="width:132px">
-                        CreatedCourses
-                    </a>
-                </li>
                 <li class="nav-item mx-2 mx-md-1 ">
                     <a href="courses.php" class="nav-link nav-links-hover course">
                         Courses
@@ -477,12 +472,12 @@
         <div class="collapse navbar-collapse justify-content-center navbarNav visitor-elements d-none">
             <ul class="navbar-nav">
                 <li class="nav-item ms-4">
-                    <a href="login.php" class=" btn btn-outline-success rounded-0 px-4">
+                    <a href="login.php" class=" btn btn-outline-success rounded-pill px-4">
                         Login
                     </a>
                 </li>
                 <li class="nav-item mx-4 mx-md-3 mx-xxl-2">
-                    <a href="signup.php" class=" btn btn-success rounded-0 px-4">
+                    <a href="signup.php" class=" btn btn-success rounded-pill px-4">
                         Signup
                     </a>
                 </li>
@@ -523,10 +518,6 @@
                         <a class="nav-link text-black sm-y border-top-gainboro registeredCourse " href="dashboard.php?#registeredCourseDiv">MyCourses
                         </a>
                     </li>
-                    <li class="nav-item mx-2 dashboard-elements ">
-                        <a class="nav-link text-black sm-y border-top-gainboro createdCourse  instructor-section" href="dashboard.php?#createdCourseDiv">CreatedCourses
-                        </a>
-                    </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link nav-link-custom text-black sm-y border-top-gainboro course" href="courses.php">Courses
                         </a>
@@ -556,6 +547,13 @@
 </div>
 <script src="js/logout.js"></script>
 <script>
+
+    // =============================================================
+    // ==============  Tab Logic ==================================
+    // ============================================================
+    
+
+
     /////////////////////////////////////////////////////////////////
     //                            Capitalizer
     /////////////////////////////////////////////////////////////////
