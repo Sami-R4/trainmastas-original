@@ -1,0 +1,101 @@
+/* loader */
+.spinner {
+  display: inline-block;
+  width: var(--bs-spinner-width);
+  height: var(--bs-spinner-height);
+  vertical-align: var(--bs-spinner-vertical-align);
+  animation: var(--bs-spinner-animation-speed) linear infinite
+    var(--bs-spinner-animation-name);
+}
+
+@keyframes spinner {
+  /* 0% {
+        transform: scale(0);
+    } */
+
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.spinner {
+  --bs-spinner-width: 2rem;
+  --bs-spinner-height: 2rem;
+  --bs-spinner-vertical-align: -0.125em;
+  --bs-spinner-animation-speed: 2s;
+  --bs-spinner-animation-name: spinner;
+  background-color: currentcolor;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    --bs-spinner-animation-speed: 1.5s;
+  }
+}
+.spinner {
+  background-color: rgba(40, 167, 69, 0.3) !important;
+}
+
+#fullScreenLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(178, 255, 196) !important;
+  /* Semi-transparent background */
+  z-index: 10;
+  /* background-color:rgb(154, 243, 175) */
+  /* Ensure it's above other content */
+}
+
+.spinner-circle-1 {
+  animation-delay: 0s;
+}
+
+.spinner-circle-2 {
+  animation-delay: 0.2s;
+}
+
+.spinner-circle-3 {
+  animation-delay: 0.4s;
+}
+.spinner-grow-customized {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: -0.125em;
+  border-radius: 50%;
+  background-color: currentcolor;
+  opacity: 0;
+  animation: spinner-grow-customized-animation 0.75s linear infinite;
+}
+
+@keyframes spinner-grow-customized-animation {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* loader */
+.custom-button {
+  border: 1px solid rgb(40, 167, 69) !important;
+}
+
+/* hover */
+.hover{
+  text-decoration: none;
+  cursor: pointer;
+}
+.hover:hover{
+  text-decoration: underline;
+}
