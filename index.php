@@ -17,6 +17,9 @@
     <script src="js/bootstrap.js"></script>
     <title>Home - TrainMastas</title>
     <style>
+        *{
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
         .bouncing-image {
             animation: bounce 2s infinite;
             /* 2 seconds duration */
@@ -57,20 +60,20 @@
     <!--------------------------------------------------------------------------------------------
                                             Hero
     ---------------------------------------------------------------------------------------------->
-    <section>
+    <section class="pm-hero">
         <header class="container-fluid pt-navbar">
             <div class="row mx-md-4">
                 <div class="col-12 col-md-6 d-flex flex-column">
                     <div class="my-auto">
-                        <h1 class="fs-2">Your All-in-One Platform for YouTube-Based Courses</h1>
-                        <p class="my-3 my-md-5">Connect with passionate instructors and a thriving learning community. Access high-quality YouTube content transformed into structured courses, complete with direct communication with course creators.</p>
+                        <h1 class="fs-2 pm-hero-heading">Your All-in-One Platform for YouTube-Based Courses</h1>
+                        <p class="my-3 my-md-5 pm-hero-text">Connect with passionate instructors and a thriving learning community. Access high-quality YouTube content transformed into structured courses, complete with direct communication with course creators.</p>
                         <div class="my-3 my-md-5 visitor-elements">
-                            <a href="signup.php" class="btn btn-outline-success rounded-0">Get Started</a>
+                            <a href="signup.php" class="btn btn-outline-success rounded-pill pm-btn pm-btn-green">Get Started</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 mt-3 mt-md-0 text-center">
-                    <img src="image/cover.png" alt="TrainMatas" class="bouncing-image" style="width:95%; height:380px; object-fit:cover;">
+                    <img src="image/cover.png" alt="TrainMatas" class="bouncing-image pm-hero-img" style="width:95%; height:380px; object-fit:cover;">
                 </div>
             </div>
         </header>
@@ -86,8 +89,10 @@
     ---------------------------------------------------------------------------------------------->
     <section class="">
         <div class=" mt-5" id="course-carousel-section">
-            <h2 class="text-center fs-4 mb-0 mx-2">Your Journey to Mastery Begins Here</h2>
-            <p class="text-center text-muted mt-1 pt-0 mx-2">Discover, learn, and grow with our diverse selection of courses designed to elevate your skills.</p>
+            <div class="pm-courses-header">
+                <h2 class="text-center fs-4 mb-0 mx-2">Your Journey to Mastery Begins Here</h2>
+                <p class="text-center text-muted mt-1 pt-0 mx-2">Discover, learn, and grow with our diverse selection of courses designed to elevate your skills.</p>
+            </div>
             <div class="container mt-4">
                 <div class="row">
 
@@ -1381,7 +1386,7 @@
             <p class="text-center text-muted mt-1 pt-0 mx-2">Browse through our curated categories to discover courses designed to enhance your skills and knowledge across various fields.</p>
             <div class="container mt-4">
                 <div class="text-center">
-                    <a href="courses.php" class="btn btn-outline-success rounded-0">Explore Courses</a>
+                    <a href="courses.php" class="btn btn-outline-success rounded-pill">Explore Courses</a>
                 </div>
 
             </div>
@@ -3197,7 +3202,7 @@
                     <div class="my-auto">
                         <h3 class="fs-3">Become A Course Creators</h3>
                         <div class="my-4 fs-5">Join a community of innovative course creators who are transforming their knowledge into engaging online learning experiences</div>
-                        <a href="#" class="btn btn-outline-success rounded-0 visitor-elements">Get Started</a>
+                        <a href="#" class="btn btn-outline-success rounded-pill visitor-elements">Get Started</a>
                     </div>
                 </div>
             </div>
