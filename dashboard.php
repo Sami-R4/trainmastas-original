@@ -38,6 +38,8 @@ include "navbar.php"
   border-bottom: 2px solid #e5e7eb;
   margin-top: 2rem;
   margin-left: 5rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 /* Tab buttons (browser-like) */
@@ -54,6 +56,7 @@ include "navbar.php"
   margin-right: 6px;
   position: relative;
   top: 2px;
+  font-size: 0.95rem;
 }
 
 /* Active tab */
@@ -86,6 +89,46 @@ include "navbar.php"
   border-top: none;
   padding-top: 1rem;
   background: #fff;
+}
+
+/* Mobile responsive tabs */
+@media (max-width: 768px) {
+  .tabs-nav {
+    margin-left: 0;
+    padding: 0;
+    flex-direction: row;
+  }
+
+  .tab-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    margin-right: 4px;
+  }
+
+  .activities-tab,
+  .courses-tab {
+    margin-left: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-nav {
+    margin-top: 1rem;
+  }
+
+  .tab-btn {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    margin-right: 2px;
+  }
+
+  .activities-tab,
+  .courses-tab {
+    padding-top: 0.75rem;
+  }
 }
 
 

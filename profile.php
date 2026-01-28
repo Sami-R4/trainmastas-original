@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/owl.css">
     <link href="css/select2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/premium.css">
 
     <script src="js/bootstrap.js"></script>
     <title id="page-title">Profile</title>
@@ -181,6 +182,208 @@ include "navbar.php"
         border: 1px solid rgb(40, 167, 69) !important;
     }
 
+    /* Enhanced UI Styling */
+    main.pt-navbar {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .container.rounded-0 {
+        background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        margin: 20px auto;
+        max-width: 1200px;
+        border: 1px solid rgba(27,125,58,0.05) !important;
+    }
+
+    .border-md-right {
+        background: linear-gradient(180deg, rgba(27,125,58,0.04) 0%, rgba(27,125,58,0.02) 100%);
+        border: none !important;
+        border-radius: 12px 0 0 12px;
+        position: relative;
+    }
+
+    .border-md-right::after {
+        content: '';
+        position: absolute;
+        right: -1px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, rgba(27,125,58,0.1), transparent, rgba(27,125,58,0.1));
+    }
+
+    .m-auto.text-center {
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    #userprofile {
+        box-shadow: 0 12px 36px rgba(27,125,58,0.2), inset 0 0 0 2px rgba(255,255,255,0.5);
+        border: 4px solid #fff;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        padding: 4px;
+    }
+
+    #userprofile:hover {
+        transform: scale(1.08) rotate(2deg);
+        box-shadow: 0 16px 48px rgba(27,125,58,0.3), inset 0 0 0 2px rgba(27,125,58,0.1);
+    }
+
+    #username {
+        font-weight: 600;
+        color: #0f1724;
+    }
+
+    #email {
+        font-weight: 500;
+    }
+
+    .instructor-section .text-center {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .userSocialMedia {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 8px;
+        border-radius: 50%;
+        background: rgba(27,125,58,0.08);
+        display: inline-block;
+    }
+
+    .userSocialMedia:hover {
+        background: rgba(27,125,58,0.15);
+        transform: translateY(-3px) scale(1.1);
+        text-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+    }
+
+    #description {
+        border: none !important;
+        background: transparent;
+        border-radius: 0;
+        padding: 24px 32px;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #2d3748;
+        font-weight: 400;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    #fields {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    #fields > div {
+        display: inline-block;
+        padding: 10px 16px;
+        background: linear-gradient(135deg, rgba(27,125,58,0.08) 0%, rgba(27,125,58,0.04) 100%);
+        border: 1px solid rgba(27,125,58,0.12);
+        border-radius: 24px;
+        font-weight: 500;
+        color: #1b7d3a;
+        font-size: 0.85rem;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 2px 8px rgba(27,125,58,0.1);
+    }
+
+    #fields > div:hover {
+        background: linear-gradient(135deg, rgba(27,125,58,0.12) 0%, rgba(27,125,58,0.08) 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(27,125,58,0.18);
+        border-color: rgba(27,125,58,0.2);
+    }
+
+    .modal-content {
+        border: none !important;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+    }
+
+    .modal-header {
+        background: linear-gradient(135deg, rgba(27,125,58,0.05), rgba(27,125,58,0.02));
+        border-bottom: none !important;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .modal-title {
+        font-weight: 600;
+        color: #0f1724;
+    }
+
+    .form-control {
+        border: none !important;
+        border-radius: 8px !important;
+        transition: all 0.3s ease;
+        background: rgba(27,125,58,0.03);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .form-control:focus {
+        border: none !important;
+        background: rgba(27,125,58,0.05);
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 3px rgba(27,125,58,0.1) !important;
+    }
+
+    .btn-success {
+        background: linear-gradient(135deg, #1b7d3a 0%, #23a054 100%);
+        border: none;
+        box-shadow: 0 4px 14px rgba(27,125,58,0.25);
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        font-weight: 600;
+    }
+
+    .btn-success:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(27,125,58,0.35);
+    }
+
+    .btn-success:active {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(27,125,58,0.25);
+    }
+
+    .btn-outline-success {
+        border: 2px solid #1b7d3a;
+        color: #1b7d3a;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-success:hover {
+        background: #1b7d3a;
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    #passwordDiv {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .modal-dialog-scrollable {
+        max-height: 90vh;
+    }
+
     /* End */
 </style>
 
@@ -202,11 +405,28 @@ include "navbar.php"
                 <div class="col-12 col-md-5 col-lg-3  border-md-right">
                     <div class="d-flex d-column">
                         <div class="m-auto text-center p-4">
-                            <div>
-                                <img src="" class="rounded-circle" alt="username" style="width:100px;height:100px;object-fit:cover" id="userprofile">
+                            <div class="mb-4">
+                                <img src="" class="rounded-circle" alt="username" style="width:120px;height:120px;object-fit:cover" id="userprofile">
+                            </div>
+                            <div class="d-flex gap-2 justify-content-center mb-3">
+                                <button type="button" class="btn btn-success rounded-pill px-3 py-2" data-bs-toggle="modal" data-bs-target="#changePasswordModal" style="box-shadow: 0 4px 12px rgba(27,125,58,0.2); border: none; font-weight: 500; font-size: 0.9rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; margin-right: 6px; vertical-align: -2px;">
+                                        <circle cx="12" cy="12" r="1"></circle>
+                                        <path d="M4.93 4.93a24 24 0 0 0 0 33.86"></path>
+                                        <path d="M2.69 6.59L4.93 4.93"></path>
+                                    </svg>
+                                    Password
+                                </button>
+                                <button type="button" class="btn btn-success rounded-pill px-3 py-2" data-bs-toggle="modal" data-bs-target="#edit" style="box-shadow: 0 4px 12px rgba(27,125,58,0.2); border: none; font-weight: 500; font-size: 0.9rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -0.5 25 25" fill="none" style="display: inline-block; margin-right: 6px; vertical-align: -2px;">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.265 4.16231L19.21 5.74531C19.3978 5.9283 19.5031 6.17982 19.5015 6.44201C19.5 6.70421 19.3919 6.9545 19.202 7.13531L17.724 8.93531L12.694 15.0723C12.6069 15.1749 12.4897 15.2473 12.359 15.2793L9.75102 15.8793C9.40496 15.8936 9.10654 15.6384 9.06702 15.2943L9.18902 12.7213C9.19806 12.5899 9.25006 12.4652 9.33702 12.3663L14.15 6.50131L15.845 4.43331C16.1743 3.98505 16.7938 3.86684 17.265 4.16231Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M5.5 18.2413C5.08579 18.2413 4.75 18.5771 4.75 18.9913C4.75 19.4056 5.08579 19.7413 5.5 19.7413V18.2413ZM19.2 19.7413C19.6142 19.7413 19.95 19.4056 19.95 18.9913C19.95 18.5771 19.6142 18.2413 19.2 18.2413V19.7413ZM14.8455 6.22062C14.6904 5.83652 14.2534 5.65082 13.8693 5.80586C13.4852 5.9609 13.2995 6.39796 13.4545 6.78206L14.8455 6.22062ZM17.8893 9.66991C18.2933 9.57863 18.5468 9.17711 18.4556 8.77308C18.3643 8.36904 17.9628 8.1155 17.5587 8.20678L17.8893 9.66991ZM5.5 19.7413H19.2V18.2413H5.5V19.7413ZM13.4545 6.78206C13.6872 7.35843 14.165 8.18012 14.8765 8.8128C15.6011 9.45718 16.633 9.95371 17.8893 9.66991L17.5587 8.20678C16.916 8.35198 16.3609 8.12551 15.8733 7.69189C15.3725 7.24656 15.0128 6.63526 14.8455 6.22062L13.4545 6.78206Z" fill="white" />
+                                    </svg>
+                                    Edit
+                                </button>
                             </div>
 
-                            <h3 class="fs-6 mt-3 p-0" id="username">
+                            <h3 class="fs-6 mt-2 p-0" id="username" style="font-weight: 700; color: #0f1724;">
                             </h3>
                             <p class="text-success my-2 py-0" id="email">
                             </p>
@@ -264,13 +484,7 @@ include "navbar.php"
                 </div>
                 <div class="col-12 col-md-7 col-lg-9 ps-md-0">
                     <hr class="d-md-none">
-                    <div class="text-end me-3 mt-3" id="icon-profile-container">
-                        <svg class="icon-profile" data-bs-toggle="modal" data-bs-target="#edit" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 -0.5 25 25" fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.265 4.16231L19.21 5.74531C19.3978 5.9283 19.5031 6.17982 19.5015 6.44201C19.5 6.70421 19.3919 6.9545 19.202 7.13531L17.724 8.93531L12.694 15.0723C12.6069 15.1749 12.4897 15.2473 12.359 15.2793L9.75102 15.8793C9.40496 15.8936 9.10654 15.6384 9.06702 15.2943L9.18902 12.7213C9.19806 12.5899 9.25006 12.4652 9.33702 12.3663L14.15 6.50131L15.845 4.43331C16.1743 3.98505 16.7938 3.86684 17.265 4.16231Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M5.5 18.2413C5.08579 18.2413 4.75 18.5771 4.75 18.9913C4.75 19.4056 5.08579 19.7413 5.5 19.7413V18.2413ZM19.2 19.7413C19.6142 19.7413 19.95 19.4056 19.95 18.9913C19.95 18.5771 19.6142 18.2413 19.2 18.2413V19.7413ZM14.8455 6.22062C14.6904 5.83652 14.2534 5.65082 13.8693 5.80586C13.4852 5.9609 13.2995 6.39796 13.4545 6.78206L14.8455 6.22062ZM17.8893 9.66991C18.2933 9.57863 18.5468 9.17711 18.4556 8.77308C18.3643 8.36904 17.9628 8.1155 17.5587 8.20678L17.8893 9.66991ZM5.5 19.7413H19.2V18.2413H5.5V19.7413ZM13.4545 6.78206C13.6872 7.35843 14.165 8.18012 14.8765 8.8128C15.6011 9.45718 16.633 9.95371 17.8893 9.66991L17.5587 8.20678C16.916 8.35198 16.3609 8.12551 15.8733 7.69189C15.3725 7.24656 15.0128 6.63526 14.8455 6.22062L13.4545 6.78206Z" fill="#000000" />
-                        </svg>
-                    </div>
-                    <p class="p-4 instructor-section" style="word-wrap: break-word; word-break: break-all; white-space: pre-wrap !important; min-height:130px;" id="description">
+                    <p class="p-4 instructor-section" style="word-wrap: break-word; word-break: break-all; white-space: pre-wrap !important; min-height:130px; background: linear-gradient(135deg, rgba(27,125,58,0.03) 0%, rgba(27,125,58,0.01) 100%); margin: 0;" id="description">
 
                     </p>
                     <hr class="w-100 instructor-section" id="field-hr">
@@ -281,20 +495,10 @@ include "navbar.php"
         </div>
     </main>
 
-    <!----------------------------------------------------------------------------------------------------------
-    ------------------------------------------------------------------------------------------------------------
-                                                Password Section
-    ------------------------------------------------------------------------------------------------------------
-    ------------------------------------------------------------------------------------------------------------>
-    <div id="passwordDiv" class="container mt-3">
-        <!-- Change Password Button -->
-        <button type="button" class="btn btn-outline-success rounded-0" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
-            Change Password
-        </button>
 
-        <!-- Change Password Modal -->
-        <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-            <div class="modal-dialog">
+    <!-- Change Password Modal -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
@@ -336,7 +540,7 @@ include "navbar.php"
                                 </button>
                             </div>
                             <div id="passwordMatch" class="text-danger fs-7"></div>
-                            <button type="button" class="btn btn-success rounded-0 mt-3" id="submitPasswordBtn">Submit</button>
+                            <button type="button" class="btn btn-success rounded-pill mr-2 mt-3" id="submitPasswordBtn" style="margin-left: auto !important;">Submit</button>
                         </form>
 
                         <!-- Verification Code Div -->
@@ -558,7 +762,7 @@ include "navbar.php"
     -------------------------------------------------- Modal --------------------------------------------------------
     ----------------------------------------------------------------------------------------------------------------->
     <div class="modal fade" id="edit" aria-labelledby="editTitle" tabindex="-1" aria-labelledby="editLabel" aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="editTitle">Edit</h1>
@@ -611,8 +815,8 @@ include "navbar.php"
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-0" data-bs-dismiss="modal" id="close-btn">Close</button>
-                    <button type="button" class="btn btn-success rounded-0" id="save">Save</button>
+                    <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal" id="close-btn">Close</button>
+                    <button type="button" class="btn btn-success rounded-pill" id="save">Save</button>
                     <button class="btn btn-success px-4 rounded-0 d-none my-0" type="button" disabled id="save-loader">
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         <span class="visually-hidden">Loading...</span>

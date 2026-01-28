@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var userCurrentPage = 1, user_Id = '', totalUserPages, userMax, userTab = "allUsers", filterValue = "", registeredCurrentPage = 1, feedbackCurrentPage = 1, totalfeedbackPages, totalRegisteredPages, feedbackMax, registeredMax, fetchUsers = false;
+    var userCurrentPage = 1, user_Id = '', totalUserPages, userMax, userTab = "allUsers", filterValue = "", registeredCurrentPage = 1, createdCurrentPage = 1, feedbackCurrentPage = 1, totalfeedbackPages, totalRegisteredPages, totalCreatedPages, feedbackMax, registeredMax, createdMax, fetchUsers = false;
     ///////////////////////////////////////////////////////////////////////
     ///////// Capitalize first letters of words //////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -10,7 +10,7 @@ $(document).ready(function () {
         const next = "#nextBtn" + id; // ID for the next button
         const pagination = "#pagination-Btn" + id; // ID for the pagination container
 
-        // Clear existing pagination buttons
+        // Clear existing pagination buttons 
         $(pagination).empty();
 
         // Determine the range of buttons to display
@@ -60,55 +60,55 @@ $(document).ready(function () {
         }
     }
 
-   /////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////
     //                            Capitalizer
     /////////////////////////////////////////////////////////////////
-    function capitalizeFirstLetter(statement) {  
+    function capitalizeFirstLetter(statement) {
         // Escape quotes to prevent conflicts in HTML  
-        function escapeQuotes(value) {  
-            return value.replace(/"/g, '&quot;').replace(/'/g, '&#39;');  
-        }  
-    
+        function escapeQuotes(value) {
+            return value.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
         // Escape the input statement  
-        const escapedStatement = escapeQuotes(statement);  
-        var words = escapedStatement.split(" ");  
-        var capitalizedWords = [];  
-    
-        for (var i = 0; i < words.length; i++) {  
-            var word = words[i];  
-            if (word.length > 0) {  
+        const escapedStatement = escapeQuotes(statement);
+        var words = escapedStatement.split(" ");
+        var capitalizedWords = [];
+
+        for (var i = 0; i < words.length; i++) {
+            var word = words[i];
+            if (word.length > 0) {
                 // Capitalize the first letter if it's an alphabetical character  
-                if (/^[a-zA-Z]/.test(word.charAt(0))) {  
-                    word = word.charAt(0).toUpperCase() + word.slice(1);  
-                }  
-            }  
-            capitalizedWords.push(word);  
-        }  
-    
-        return capitalizedWords.join(" ");  
-    }  
+                if (/^[a-zA-Z]/.test(word.charAt(0))) {
+                    word = word.charAt(0).toUpperCase() + word.slice(1);
+                }
+            }
+            capitalizedWords.push(word);
+        }
+
+        return capitalizedWords.join(" ");
+    }
 
     /////////////////////////////////////////////////////////////////
     //                 Capitalizer of first letter of phrase
     /////////////////////////////////////////////////////////////////
-    function capitalizeFirstLetterOfPhrase(statement) {  
+    function capitalizeFirstLetterOfPhrase(statement) {
         // Escape quotes to prevent conflicts in HTML  
-        function escapeQuotes(value) {  
-            return value.replace(/"/g, '&quot;').replace(/'/g, '&#39;');  
-        }  
+        function escapeQuotes(value) {
+            return value.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
         // Escape the input statement  
-        const escapedStatement = escapeQuotes(statement);  
+        const escapedStatement = escapeQuotes(statement);
         // Capitalize the first letter if the first character is a letter  
-        if (escapedStatement.length > 0) {  
-            const firstChar = escapedStatement.charAt(0);  
+        if (escapedStatement.length > 0) {
+            const firstChar = escapedStatement.charAt(0);
             // Check if the first character is a letter (using regex)  
-            if (/^[a-zA-Z]/.test(firstChar)) {  
-                return escapedStatement.charAt(0).toUpperCase() + escapedStatement.slice(1);  
-            }  
-        }  
+            if (/^[a-zA-Z]/.test(firstChar)) {
+                return escapedStatement.charAt(0).toUpperCase() + escapedStatement.slice(1);
+            }
+        }
         // Return the escaped statement unchanged if no capitalization is applied or if it's empty  
-        return escapedStatement;  
-    }  
+        return escapedStatement;
+    }
     // 
     function calculatePercentage(score, total) {
         if (total === 0) {
@@ -131,21 +131,21 @@ $(document).ready(function () {
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Format Amount to smaller character(eg 1000=1M, 1000000=1M, 1000000000=1B)
-    function formatAmount(value) {  
-        const thresholds = [  
+    function formatAmount(value) {
+        const thresholds = [
             { value: 1e9, suffix: 'B' }, // Billion  
             { value: 1e6, suffix: 'M' }, // Million  
             { value: 1e3, suffix: 'K' }   // Thousand  
-        ];  
-    
+        ];
+
         // Check if the value is greater than 1000  
-        for (const { value: thresholdValue, suffix } of thresholds) {  
-            if (value >= thresholdValue) {  
-                return (value / thresholdValue).toFixed(1).replace(/\.0$/, '') + suffix;  
-            }  
-        }  
+        for (const { value: thresholdValue, suffix } of thresholds) {
+            if (value >= thresholdValue) {
+                return (value / thresholdValue).toFixed(1).replace(/\.0$/, '') + suffix;
+            }
+        }
         // Add "not" if value is less than 1000  
-        return value;  
+        return value;
     }
     var num = 0;
     function DisplayUser(users, purpose) {
@@ -164,18 +164,19 @@ $(document).ready(function () {
             let actionText = user.action === 'd' ? 'Restored' :
                 user.action === 'b' ? 'Unban' :
                     user.action; // Leave as is for "n" or others
-            if (user.Image == ""||user.Image == null) {
+            if (user.Image == "") {
                 img = "../image/default-profile.png";
             } else {
                 img = "../profile/" + user.Image;
             }
             // Create a new row
             const userRow = `
-                <tr id="user-element-${++num}" class="user-row">
+                <tr id="user-element-${++num}">
                     <th scope="row">${num}</th>
                     <td class="profile-link" data-user_id="${user.user_ID}" data-num="${num}" id="profile-link-${num}"><img src="${img}" alt="${capitalizeFirstLetter(user.Name)}" class="rounded-circle me-1" style="width:30px; height:30px; object-fit:cover"><span>${capitalizeFirstLetter(user.Name)}</span></td>
                     <td>${user.Email}</td>
                     <td>${formatAmount(user.registered_courses)}</td>
+                    <td>${formatAmount(user.produced_courses)}</td>
                     <td>${formatDate(user.Date)}</td>
                     <td class="text-center">
                         <button class="btn btn-outline-success rounded-0  my-1 ${display} action-ban" id="action-ban-${num}" data-num="${num}" data-user_id="${user.user_ID}">
@@ -201,7 +202,9 @@ $(document).ready(function () {
             $("#btn-containerUser").removeClass("d-none");
 
         }
-    } function displayRegisteredCourse(response) {
+    }
+
+    function displayRegisteredCourse(response) {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// Registered Course Section
         var elements = '';
@@ -216,7 +219,6 @@ $(document).ready(function () {
             }
             var temp_element = "";
             if (response.registeredCourses[i].Scores.length > 0) {
-
                 temp_element += `<div class="view-score hover text-muted" data-num="${i}">View Score</div><div class="container mt-1 view-score-div" style="display:none; width: 100%; overflow: auto;"id="view-score-${i}">  
                                     <h2 class="text-center">Scores Overview</h2>  
                                     <table class="table table-bordered">  
@@ -276,6 +278,66 @@ $(document).ready(function () {
         $("#course-registered-loader").addClass("d-none");
         $("#course-registered").empty().append(elements);
         //////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
+
+    function displayCreatedCourse(response) {
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////  
+        /// Created Course Section  
+        var elements = '';
+        var element = ``;
+
+        // Display the total number of created courses  
+        if (response.totalCreatedCourses && response.totalCreatedCourses !== undefined) {
+            $("#created-num").text(response.totalCreatedCourses);
+        }
+
+        // Loop through each created course  
+        for (var i = 0; i < response.createdCourses.length; i++) {
+            // Create the course display element  
+            var cost = "Free";
+            if (response.createdCourses[i].Cost !== 0) {
+                cost = "$" + response.createdCourses[i].Cost;
+            }
+            element = `  
+                <div class="py-3" style="cursor:default">  
+                    <h2 class="fs-6 text-success fw-semibold mb-0">  
+                        ${capitalizeFirstLetter(response.createdCourses[i].Title)}  
+                    </h2> 
+                    <div class="d-flex justify-content-between my-3"> 
+                    <p class="fs-6 py-0 mb-0 mt-1">Registered: <span>${response.createdCourses[i].registered}</span></p>  
+                    <p class="fs-6 py-0 mb-0 mt-1">Tests: <span>${response.createdCourses[i].Num_test}</span></p>  
+                    <p class="fs-6 py-0 mb-0 mt-1">Cost: <span>${cost}</span></p>  
+                    <p class="fs-6 py-0 mb-0 mt-1">Modules: <span>${response.createdCourses[i].Num_modules}</span></p> 
+                    </div> 
+                    <div class="d-flex justify-content-between mt-2">  
+                    <p class="fs-7 py-0 my-0 text-muted"><span>${formatDate(response.createdCourses[i].Date)}</span></p>  
+                        <a href="courses.php?v=${response.createdCourses[i].course_ID}" class="fs-7 py-0 my-0 text-muted hover">View Course</a>  
+                    </div>  
+                </div>  
+                <hr class="py-0 my-0">`;
+
+            elements += element; // Append the course element to elements  
+        }
+
+        // If no courses found, display a message  
+        if (elements === '') {
+            elements = `<div class="text-center py-2">  
+                            <hr class="py-0 mb-3 mt-0">  
+                            User has no created courses.  
+                        </div>`;
+        } else {
+            elements = '<hr class="py-0 my-0 mt-3">' + elements;
+            // Handle pagination if necessary  
+            if (response.totalCreatedCourses > 5) {
+                totalCreatedPages = Math.ceil(response.totalCreatedCourses / 5);
+                create_pages_btn(createdCurrentPage, "CreatedCourse", totalCreatedPages);
+                $("#btn-containerCreatedCourse").removeClass("d-none");
+            }
+        }
+
+        $("#course-created-loader").addClass("d-none"); // Hide loading indicator  
+        $("#course-created").empty().append(elements); // Display the courses  
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////  
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////          Start Rating Generation        //////////////////////////////////////
@@ -343,6 +405,7 @@ $(document).ready(function () {
             elements = `<div class="text-center py-2">
                             <hr class="py-0 mb-3 mt-0">
                             No feedback provided.
+                            
                         </div>`;
         } else {
             elements = '<hr class="py-0 my-0 mt-3">' + elements;
@@ -357,8 +420,94 @@ $(document).ready(function () {
 
         $("#course-feedback-loader").addClass("d-none");
         $("#course-feedback").empty().append(elements);
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////
     }
+    //////////////////////////////////////////////////////////////// 
+    ////////////////         Produce PDF         ///////////////////
+    ////////////////////////////////////////////////////////////////
+    var pdfLink;
+    ////////////////////////////////////
+    // Show pdf
+    $("#cvLink").click(function (e) {
+        e.preventDefault(); // prevent default link behavior if it's <a>
+        $("#pdf-main-container").slideToggle(300); // smooth slide up/down
+        loadPDF(pdfLink);
+    });
+    let pdfDoc = null;
+    let currentScale = 1;
+    let baseScale = 1;
+
+    function renderPDFPages(pdf, scale, containerSelector = "#pdf-container") {
+        const container = document.querySelector(containerSelector);
+        container.innerHTML = "";
+
+        // We'll wait for first page to calculate scale
+        pdf.getPage(1).then(function (page) {
+            const unscaledViewport = page.getViewport({ scale: 1 });
+
+            const containerWidth = container.clientWidth;
+            baseScale = containerWidth / unscaledViewport.width;
+
+            // If this is the initial render, use baseScale
+            if (scale === 1) {
+                currentScale = baseScale;
+            }
+
+            updateZoomUI();
+
+            // Now render all pages using currentScale
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                pdf.getPage(pageNum).then(function (page) {
+                    const viewport = page.getViewport({ scale: currentScale });
+
+                    const canvas = document.createElement("canvas");
+                    const context = canvas.getContext("2d");
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+
+                    canvas.style.display = "block";
+                    canvas.style.margin = "0 auto 20px auto";
+
+                    container.appendChild(canvas);
+
+                    page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    });
+                });
+            }
+        });
+    }
+
+    function loadPDF(pdfUrl) {
+        pdfjsLib.getDocument(pdfUrl).promise.then(function (pdf) {
+            pdfDoc = pdf;
+            baseScale = 1; // Reset
+            renderPDFPages(pdf, currentScale);
+        });
+    }
+
+    function updateZoomUI() {
+        document.getElementById("zoom-level").textContent =
+            Math.round((currentScale / baseScale) * 100) + "%";
+    }
+
+    // Zoom buttons
+    document.getElementById("zoom-in").addEventListener("click", function () {
+        if (pdfDoc && currentScale < baseScale * 3) {
+            currentScale += baseScale * 0.1;
+            renderPDFPages(pdfDoc, currentScale);
+            updateZoomUI();
+        }
+    });
+
+    document.getElementById("zoom-out").addEventListener("click", function () {
+        if (pdfDoc && currentScale > baseScale * 0.5) {
+            currentScale -= baseScale * 0.1;
+            renderPDFPages(pdfDoc, currentScale);
+            updateZoomUI();
+        }
+    });
     function updateUserProfileAndFields(response) {
         // Update user details
         $("#username").text(capitalizeFirstLetter(response.userDetails.Name));
@@ -367,6 +516,16 @@ $(document).ready(function () {
         $("#email").text(response.userDetails.Email);
         $("#description").text(capitalizeFirstLetterOfPhrase(response.userDetails.Description) || "No description available");
 
+        if (response.userDetails.applied === true && response.userDetails.rejected === false) {
+            $("#operationValidate").removeClass("d-none");
+            $("#operationValidate span").empty().text("Recently applied to be a teacher.");
+        } else if (response.userDetails.rejected === true && response.userDetails.reapplied === true) {
+            $("#operationValidate").removeClass("d-none");
+            $("#operationValidate span").empty().text("Was rejected previously due to: " + response.userDetails.rejection_reason);
+        } else {
+            $("#operationValidate").addClass("d-none")
+
+        }
         // /////////////////////////////////////
         var actionText = response.userDetails.action === 'd' ? 'Restored' :
             response.userDetails.action === 'b' ? 'Unban' :
@@ -375,16 +534,27 @@ $(document).ready(function () {
         $("#action-ban-btn").text(actionText === 'Unban' ? 'Unban' : 'Ban');
         $("#action-delete-btn").text(actionText === 'Restored' ? 'Restore' : 'Delete');
 
-        if (response.userDetails.linkedinLink && response.userDetails.linkedinLink.trim() !== "") {
-            $("#linkedinLink").attr("href", response.userDetails.linkedinLink).removeClass("d-none");
-        } else {
-            $("#linkedinLink").addClass("d-none");
-        }
+        // Assuming response is your AJAX response object  
+        $(".social-media-links").addClass("d-none");
+        if (response.userDetails && response.userDetails.links) {
+            // Loop through the links array  
+            response.userDetails.links.forEach(function (linkObj) {
+                // Check if the link type is 'l' for LinkedIn  
+                if (linkObj.link_type === 'l') {
+                    $("#linkedinLink").attr("href", linkObj.link).removeClass("d-none");
+                }
 
-        if (response.userDetails.portfolioLink && response.userDetails.portfolioLink.trim() !== "") {
-            $("#portfolioLink").attr("href", response.userDetails.portfolioLink).removeClass("d-none");
-        } else {
-            $("#portfolioLink").addClass("d-none");
+                // Check if the link type is 'c' for CV  
+                if (linkObj.link_type === 'c') {
+                    $("#cvLink").removeClass("d-none");
+                    pdfLink = "../cv/" + linkObj.link;
+                }
+
+                // Check if the link type is 'p' for Portfolio  
+                if (linkObj.link_type === 'p') {
+                    $("#portfolioLink").attr("href", linkObj.link).removeClass("d-none");
+                }
+            });
         }
 
         $("#dateJoin").text("Join on the " + formatDate(response.userDetails.Date));
@@ -435,7 +605,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'app/students_process.php', // PHP script to handle logout
+            url: 'app/teachers_process.php', // PHP script to handle logout
             type: 'POST',
             data: {
                 purpose: purpose,
@@ -469,7 +639,6 @@ $(document).ready(function () {
                         $("#user-message").removeClass("d-none").text("No user found.");
                     }, 1000);
                 } else if (data.state === "user_marked_deleted") {
-                    // Show the message  
                     $('#message').text("User was successfully deleted.").fadeIn(1000);
                     $(temp_container_element_id).text(temp_container_btn_value);
                     $(temp_container_btn).text(temp_container_btn_value);
@@ -481,6 +650,29 @@ $(document).ready(function () {
                         displayRegisteredCourse(data);
                         $("#course-registered-loader").addClass("d-none");
                         $("#course-registered").removeClass("d-none");
+                    }, 1000);
+                } else if (data.state === "successFetchingCreated") {
+                    setTimeout(function () {
+                        displayCreatedCourse(data);
+                        $("#course-created-loader").addClass("d-none");
+                        $("#course-created").removeClass("d-none");
+                    }, 1000);
+                    // 
+                } else if (data.state === "userRejected") {
+                    $("#operationValidate").addClass("d-none");
+                    $('#message').text("Teacher was successfully rejected.").fadeIn(1000);
+                    $(temp_container_element_id).text(temp_container_btn_value);
+                    $(temp_container_btn).text(temp_container_btn_value);
+                    setTimeout(function () {
+                        $('#message').fadeOut(1000); // 1000 ms = 1 second to fade out  
+                    }, 1000);
+                } else if (data.state === "userValidated") {
+                    $("#operationValidate").addClass("d-none");
+                    $('#message').text("Teacher was successfully approved.").fadeIn(1000);
+                    $(temp_container_element_id).text(temp_container_btn_value);
+                    $(temp_container_btn).text(temp_container_btn_value);
+                    setTimeout(function () {
+                        $('#message').fadeOut(1000); // 1000 ms = 1 second to fade out  
                     }, 1000);
                 } else if (data.state === "successFetchingFeedback") {
                     setTimeout(function () {
@@ -507,8 +699,6 @@ $(document).ready(function () {
                 } else if (data.state === "user_delete_free") {
                     // Show the message  
                     $('#message').text("User was successfully restored.").fadeIn(1000);
-                    $(temp_container_element_id).text(temp_container_btn_value);
-                    $(temp_container_btn).text(temp_container_btn_value);
                     setTimeout(function () {
                         $('#message').fadeOut(1000); // 1000 ms = 1 second to fade out  
                     }, 1000); // Wait 2 seconds before starting to fade out 
@@ -519,6 +709,7 @@ $(document).ready(function () {
                         $("#page-title").text(capitalizeFirstLetter(data.userDetails.Name) + "'s Profile setting.");
                         updateUserProfileAndFields(data);
                         displayRegisteredCourse(data);
+                        displayCreatedCourse(data);
                         displayFeedbackCourse(data);
                     }, 1000);
                 } else if (data.state === "deleted_success") {
@@ -537,8 +728,8 @@ $(document).ready(function () {
                             $("#user-loader").addClass("d-none");
                             $("#user-message").removeClass("d-none").text("No user found.");
                             $('#message').fadeOut(1000); // 1000 ms = 1 second to fade out  
-                        }, 1000);
-                    } // Wait 2 seconds before starting to fade out
+                        }, 1000); // Wait 2 seconds before starting to fade out
+                    }
                 } else if (data.state === "notfound") {
                     // Show the message  
                     $('#message').text("Users not found. You will be redirected.").fadeIn(1000);
@@ -583,7 +774,7 @@ $(document).ready(function () {
         $("#profile-container").removeClass("d-none");
         fetchUsersDetails(user_Id, "", "sentThisUserDetails", "");
     } else {
-        $("#page-title").text("Student Management")
+        $("#page-title").text("Teacher Management")
         fetchUsersDetails("", '1', "allUsers", filterValue);
     }
 
@@ -694,6 +885,62 @@ $(document).ready(function () {
         }, 800);
     });
     ////////////////////////////////////////////////////////////////////
+    ///////           Created Course Navigation Bnts          ///////
+    ////////////////////////////////////////////////////////////////////
+    // operations for prevBtn 
+    $("#prevBtnCreatedCourse").on("click", function () {
+        // Ensure page doesn't go below 1
+        if (createdCurrentPage > 1) {
+            $("#nextBtnCreatedCourse").addClass("disabled");
+            $("#prevBtnCreatedCourse").addClass("disabled");
+            var containerTop = $("#createdCourseDiv").offset().top;
+            $("html, body").scrollTop(containerTop);
+            createdCurrentPage--;
+            $("#pagination-BtnCreatedCourse .pageBtn").removeClass("custom-button");
+            $(`#pagination-BtnCreatedCourse .pageBtn:contains('${createdCurrentPage}')`).addClass("custom-button");
+
+            setTimeout(function () {
+                $("#course-created").empty();
+                $("#course-created-loader").removeClass("d-none");
+                fetchUsersDetails(user_Id, createdCurrentPage, "fetchCreated", "");
+            }, 800);
+        }
+    });
+
+    // operations for nextBtn
+    $("#nextBtnCreatedCourse").on("click", function () {
+        // Ensure current page doesn't exceed total pages
+        if (createdCurrentPage < totalCreatedPages) {
+            $("#nextBtnCreatedCourse").addClass("disabled");
+            $("#prevBtnCreatedCourse").addClass("disabled");
+            var containerTop = $("#createdCourseDiv").offset().top;
+            $("html, body").scrollTop(containerTop);
+
+            createdCurrentPage++;
+
+            $("#pagination-BtnCreatedCourse .pageBtn").removeClass("custom-button");
+            $(`#pagination-BtnCreatedCourse .pageBtn:contains('${createdCurrentPage}')`).addClass("custom-button");
+            setTimeout(function () {
+                $("#course-created").empty();
+                $("#course-created-loader").removeClass("d-none");
+                fetchUsersDetails(user_Id, createdCurrentPage, "fetchCreated", "");
+            }, 800);
+        }
+    });
+    // operations for in between prevBtn and nextBtn
+    $("#pagination-BtnCreatedCourse").on("click", ".pageBtn", function () {
+        $("#pagination-BtnCreatedCourse .pageBtn").removeClass("custom-button");
+        $(this).addClass("custom-button");
+        createdCurrentPage = $(this).text();
+        var containerTop = $("#createdCourseDiv").offset().top;
+        $("html, body").scrollTop(containerTop);
+        setTimeout(function () {
+            $("#course-created").empty();
+            $("#course-created-loader").removeClass("d-none");
+            fetchUsersDetails(user_Id, createdCurrentPage, "fetchCreated", "");
+        }, 800);
+    });
+    ////////////////////////////////////////////////////////////////////
     ///////           feedback Course Navigation Bnts          ///////
     ////////////////////////////////////////////////////////////////////
     // operations for prevBtn 
@@ -762,6 +1009,7 @@ $(document).ready(function () {
         // Check if the key pressed is the Enter key (key code 13)  
         if (event.which === 13) {
             num = 0;
+            $("#message-empty").addClass("d-none");
             event.preventDefault(); // Prevent the default action (form submission)  
             filterValue = $(this).val(); // Collect the input value  
             userCurrentPage = 1;
@@ -770,6 +1018,7 @@ $(document).ready(function () {
     });
     $(".user-navLinks").click(function () {
         $("#clearAllDeleted").css("display", "none");
+        $("#message-empty").addClass("d-none");
         num = 0;
         userTab = $(this).data("id");
         userCurrentPage = 1;
@@ -795,6 +1044,7 @@ $(document).ready(function () {
             temp_container_btn_value = "Ban";
         } else {
             temp_container_btn_value = "Unban";
+
             temp_element_id = "#action-delete-" + num;
             $(temp_element_id).text("Delete");
             $("#action-delete-btn").text("Delete");
@@ -814,6 +1064,7 @@ $(document).ready(function () {
             temp_container_btn_value = "Delete";
         } else {
             temp_container_btn_value = "Restore";
+
             temp_element_id = "#action-ban-" + num;
             $(temp_element_id).text("Ban");
             $("#action-ban-btn").text("Ban");
@@ -867,7 +1118,7 @@ $(document).ready(function () {
             filterValue = "";
             userTab = "allUsers";
             fetchUsersDetails("", '1', "allUsers", filterValue);
-            $("#page-title").text("Student Management")
+            $("#page-title").text("Teacher Management")
         }
         setTimeout(function () {
             $("#user-loader").addClass("d-none");
@@ -895,4 +1146,59 @@ $(document).ready(function () {
             $(temp_user_id).show("slow");
         }
     });
+
+    $("#action-approve-btn").click(function () {
+        if (!cValue) {
+            var urlParams = new URLSearchParams(window.location.search);
+            cValue = urlParams.get('c');
+        }
+        fetchUsersDetails(cValue, "", "approve", "");
+    });
+
+    //////////////////////////////////////////////////////////////////////////////
+    /////////////////      Text Length Controller       //////////////////////////
+    //////////////////////////////////////////////////////////////////////////////
+    function checkCharacterCount(text, maxLimit) {
+        // Get the current character count  
+        const currentCount = text.length;
+
+        // Check if the maximum limit is exceeded  
+        if (currentCount == 0) {
+            return "cant"; // Return false if exceeded  
+        } else if (currentCount > maxLimit) {
+            return "exceed"; // Return false if exceeded  
+        } else {
+            // Update the character display or do something else as needed  
+            $("#characterCount").text(currentCount + " / " + maxLimit).removeClass("text-danger").addClass("text-muted");
+            return "within"; // Return true if within limit  
+        }
+    }
+    $("#reason").on("input", function () {
+        if (checkCharacterCount($(this).val(), 200) == "exceed") {
+            // False
+            $("#characterCount").text("You have exceeded the maximum character limit of 100 characters.").removeClass("text-muted").addClass("text-danger");
+        } else if (checkCharacterCount($(this).val(), 200) == "cant") {
+            // False
+            $("#characterCount").text("This field can not be empty.").removeClass("text-muted").addClass("text-danger");
+        }
+    })
+    $("#confirmRejection").on("click", function () {
+        if (checkCharacterCount($("#reason").val(), 200) == "exceed") {
+            // False
+            $("#characterCount").text("You have exceeded the maximum character limit of 100 characters.").removeClass("text-muted").addClass("text-danger");
+        } else if (checkCharacterCount($("#reason").val(), 200) == "cant") {
+            // False
+            $("#characterCount").text("This field can not be empty.").removeClass("text-muted").addClass("text-danger");
+        } else {
+            $("#confirmRejection").modal("hide");
+            $(".editing-features").addClass("d-none").removeClass("active-course-navLinks");
+            $("#actual-btn").addClass("active-course-navLinks");
+            if (!cValue) {
+                var urlParams = new URLSearchParams(window.location.search);
+                cValue = urlParams.get('c');
+            }
+            fetchUsersDetails(cValue, $("#reason").val().trim(), 'reject', '');
+            $("#reason").val("");
+        }
+    })
 })

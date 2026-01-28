@@ -474,8 +474,7 @@
 
         @media (max-width: 640px) {
             .breadcrumb-nav {
-                padding: 6px 20px;
-                font-size: 12px;
+                display: none;
             }
 
             .breadcrumb-brand {

@@ -414,6 +414,15 @@
         .d-none {
             display: none !important;
         }
+        @media (max-width: 575px) {
+            .login-container{
+                margin: 0;
+                width: 100%;
+            }
+            .breadcrumb-nav{
+                display: none;
+            }
+        }
     </style>
 </head>
 
