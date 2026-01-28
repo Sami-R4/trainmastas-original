@@ -5,16 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32" href="./image/logo.png">
+    <link rel="stylesheet" href="./css/premium.css">
 
     <script src="js/jquery.js"></script>
     <script src="js/session_checker.js"></script>
     <script>
         // Redirecting script
-        checkSession().then(({ isLoggedIn, userType }) => {
-           if (!isLoggedIn) {
+        window.addEventListener('sessionChecked', function() {
+            if (!window.isLoggedIn) {
                 window.location.href = 'login.php';
-            }else{
-                $("#main-body").css("display",'gird')
             }
         });
     </script>
@@ -162,7 +161,7 @@
     </style>
 </head>
 
-<body style="overflow:hidden;display:none;" id='main-body'>
+<body style="overflow:hidden">
     <div id="fullScreenLoader" style="height:100%; align-items:center;justify-content:center;">
         <div class="spinner-circle-1 spinner-grow-customized rounded-circle" role="status" style="background-color:rgba(40, 167, 69,0.5);padding:0.5vh">
         </div>
